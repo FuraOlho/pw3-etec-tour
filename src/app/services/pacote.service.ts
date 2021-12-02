@@ -6,16 +6,19 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PacoteService {
-
   API = '//etec-tour.herokuapp.com/v1/pacotes';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http : HttpClient) { }
 
-  listarTodos() : Observable<any> {
+  ListarTodos() : Observable<any>{
     return this.http.get(this.API);
   }
 
+  buscarPorId(id : any) : Observable<any>{
+    return this.http.get(`${this.API}/${id}`);
+  }
 
-  
-
+  inserir(data: any) : Observable<any>{
+    return this.http.post(this.API, data);
+  }
 }
